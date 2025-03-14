@@ -21,13 +21,6 @@ else
   exit 1
 fi
 
-#!/bin/bash
-# Check if private key exists, if not, create one
-if [ ! -f */SoloCA/privatekey.pem ]; then
-  echo "Private key not found, generating a new one..."
-  openssl genpkey -algorithm RSA -out /path/to/privatekey.pem
-  openssl rsa -pubout -in /SoloCA/privatekey.pem -out /SoloCA/publickey.pem
-fi
 
 npm install
 
