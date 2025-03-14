@@ -21,6 +21,14 @@ else
   exit 1
 fi
 
+#!/bin/bash
+# Check if private key exists, if not, create one
+if [ ! -f /path/to/privatekey.pem ]; then
+  echo "Private key not found, generating a new one..."
+  openssl genpkey -algorithm RSA -out /path/to/privatekey.pem
+  openssl rsa -pubout -in /path/to/privatekey.pem -out /path/to/publickey.pem
+fi
+
 npm install
 
 pm2 start ./bin/www --name mathapp
